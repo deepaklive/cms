@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,7 +53,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    CKEditorModule
+    CKEditorModule,
+    
 
   ],
   providers: [
@@ -60,7 +62,9 @@ import { BlogsComponent } from './blogs/blogs.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    provideAnimations()
+
   ],
   bootstrap: [AppComponent]
 })

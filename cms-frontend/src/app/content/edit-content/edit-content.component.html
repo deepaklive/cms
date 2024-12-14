@@ -1,1 +1,90 @@
-<p>edit-content works!</p>
+<div class="split-container">
+  <div class="left-panel">
+    <!-- Left content goes here -->
+    <h2>Left Side</h2>
+    <div class="create-content-container">
+      <h2>{{ contentId ? "Edit" : "Create" }} Content</h2>
+
+      <form [formGroup]="createContentForm" (ngSubmit)="onSubmit()">
+        <!-- Title Field -->
+        <mat-form-field class="full-width">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            formControlName="title"
+            placeholder="Enter content title"
+          />
+          <mat-error
+            *ngIf="createContentForm.get('title')?.hasError('required')"
+            >Title is required</mat-error
+          >
+        </mat-form-field>
+
+        <!-- Body Field -->
+        <div class="content-editor-container">
+          <mat-label>Body</mat-label>
+          <ckeditor
+            formControlName="body"
+            [editor]="Editor"
+            [config]="config"
+          ></ckeditor>
+          <!-- <textarea matInput formControlName="body" placeholder="Enter content body"></textarea>  -->
+          <mat-error *ngIf="createContentForm.get('body')?.hasError('required')"
+            >Body is required</mat-error
+          >
+        </div>
+
+        <!-- Image Upload Field -->
+        <mat-label>Upload Image</mat-label>
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          formControlName="image"
+        />
+        <mat-error *ngIf="createContentForm.get('image')?.hasError('required')"
+          >Image is required</mat-error
+        >
+
+        <div *ngIf="imageFile">
+          <p><strong>Selected Image:</strong> {{ imageFile.name }}</p>
+        </div>
+
+        <div *ngIf="contentData && contentData.image">
+          <p><strong>Current Image:</strong> {{ contentData.image }}</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="createContentForm.invalid"
+        >
+          {{ contentId ? "Update" : "Create" }} Content
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="right-panel">
+    <!-- Right content goes here -->
+    <h2>Right Side</h2>
+    <mat-card-header>
+      <mat-card-title>{{
+        createContentForm.get("title")?.value
+      }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="imageFile"
+      [alt]="altImage"
+      class="content-image"
+    />
+    <mat-card-content>
+      <div [innerHTML]="createContentForm.get('body')?.value"></div>
+      <!-- <p>{{ content.body }}</p> -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Read More</button>
+    </mat-card-actions>
+  </div>
+</div>

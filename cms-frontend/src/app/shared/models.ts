@@ -1,4 +1,4 @@
-export interface Content{
+export interface ContentModel{
     id: number;
     author:any;
     image_url: string;

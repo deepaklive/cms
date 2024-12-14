@@ -9,10 +9,14 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ['first_name', 'last_name', 'email']
 
 
+
+
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(min_length=8, required=True)
     
+
+
 
 class ContentSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
@@ -33,6 +37,8 @@ class ContentSerializer(serializers.ModelSerializer):
         if obj.image:
             return settings.MEDIA_URL + str(obj.image)
         return None
+
+
 
 class MediaFileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -55,8 +61,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             password=validated_data['password'],
             email=validated_data.get('email', ''),
-            first_name=validated_data.get('first_name', ''),
-            last_name=validated_data.get('last_name', '')
+            first_name=validated_data.get('firstname', ''),
+            last_name=validated_data.get('lastname', '')
         )
         return user
 

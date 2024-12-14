@@ -57,8 +57,10 @@ export class ChangePasswordComponent implements OnInit {
       return;
     }
 
+    const { username, oldPassword, newPassword } = this.changePasswordForm.value;
+
     const formData = this.changePasswordForm.value;
-    this.authService.changePassword(this.changePasswordForm.get('oldPassword')?.value, this.changePasswordForm.get('newPassword')?.value).subscribe(
+    this.authService.changePassword(oldPassword, newPassword).subscribe(
       (response) => {
         alert('Password changed successfully!');
         this.router.navigate(['/login']);

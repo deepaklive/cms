@@ -1,1 +1,22 @@
-<p>content-view works!</p>
+<mat-card-header>
+    <mat-card-title>{{ content.title }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ content.author.first_name }} {{ content.author.last_name }} -
+      {{ content.author.email }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="content.image"
+    [alt]="altImage"
+    class="content-image"
+  />
+  <mat-card-content>
+    <div [innerHTML]="content.body"></div>
+    <!-- <p>{{ content.body }}</p> -->
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Read More</button>
+  </mat-card-actions>
+  
+ 

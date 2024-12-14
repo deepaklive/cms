@@ -1,0 +1,63 @@
+.create-content-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  mat-error {
+    color: red;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  
+  .content-editor-container {
+    max-width: 700px;
+    margin: 20px auto;
+  }
+  
+  .success-message {
+    color: green;
+    margin-top: 16px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 16px;
+  }
+
+
+  .split-container {
+    display: flex;
+    height: 100vh; /* full viewport height, optional */
+  }
+  
+  .left-panel, .right-panel {
+    flex: 1; /* Each panel takes up equal width */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Optional styling for differentiation */
+  .left-panel {
+    background-color: #f0f0f0; 
+  }
+  
+  .right-panel {
+    background-color: #ffffff; 
+    border-left: 1px solid #ccc;
+  }

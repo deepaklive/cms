@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class ContentService {
-  private apiUrl = environment.baseUrl +'/content/';
+  private apiUrl = environment.baseUrl +'content/';
 
   constructor(private http: HttpClient) {}
 
