@@ -23,6 +23,7 @@ import { ContentViewComponent } from './content/content-view/content-view.compon
 import { EditContentComponent } from './content/edit-content/edit-content.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { BlogsComponent } from './blogs/blogs.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ContentPreviewComponent,
     ContentViewComponent,
     EditContentComponent,
-    DashboardComponent
+    DashboardComponent,
+    BlogsComponent
   ],
   imports: [
     BrowserModule,
