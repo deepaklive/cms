@@ -8,6 +8,7 @@ import { ContentListComponent } from './content/content-list/content-list.compon
 import { EditContentComponent } from './content/edit-content/edit-content.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
+import { BlogsComponent } from './blogs/blogs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,9 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'change-password', component: ChangePasswordComponent },
-  { path: 'view-all', component: ContentListComponent},
+  { path: 'blogs', component: BlogsComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: ContentListComponent, canActivate: [AuthGuard] },
   { path: 'content/create', component: EditContentComponent, canActivate: [AuthGuard] },
   { path: 'content/edit/:id', component: EditContentComponent, canActivate: [AuthGuard] },
 ];
