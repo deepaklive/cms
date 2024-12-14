@@ -15,6 +15,10 @@ export class ContentService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  getContentbyId(id: string | null): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${id}/`);
+  }
+
   deleteContent(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}${id}/`);
   }

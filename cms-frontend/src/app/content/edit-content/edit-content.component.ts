@@ -13,7 +13,7 @@ import { ContentService } from 'src/app/shared/content.service';
 export class EditContentComponent implements OnInit {
 
   altImage='assets/images/00000069.JPG';
-  
+
   public Editor = ClassicEditor;
   public config = {
     licenseKey: 'GPL'
@@ -21,16 +21,14 @@ export class EditContentComponent implements OnInit {
     // toolbar: [ 'undo', 'redo', '|', 'bold', 'italic', '|', 'formatPainter' ]
 }
 
-  createContentForm: FormGroup = this.fb.group({
-    title: ['', [Validators.required]],
-    body: ['', [Validators.required]],
-    image: [null],
-  });
+  createContentForm: FormGroup;
 
   imageFile: File | null = null;
-  contentId: string | null = null;
+  contentId: string | null;
   contentData: any = null;
   
+  submitted = false; 
+
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +43,7 @@ export class EditContentComponent implements OnInit {
     this.createContentForm = this.fb.group({
       title: ['', [Validators.required]],
       body: ['', [Validators.required]],
-      image: [null],
+      image: ['', Validators.pattern(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/)],
     });
 
     // Get contentId from route parameters (if any)
@@ -67,7 +65,7 @@ export class EditContentComponent implements OnInit {
 
   // Method to load content data if editing
   loadContentData(): void {
-    this.http.get(`/api/content/${this.contentId}`).subscribe(
+    this.contentService.getContentbyId(this.contentId).subscribe(
       (data: any) => {
         this.contentData = data;
         // Fill the form with the content data
@@ -86,6 +84,10 @@ export class EditContentComponent implements OnInit {
 
   }
 
+  get f() {
+    return this.createContentForm.controls;
+  }
+
   // Method to submit the form
   onSubmit(): void {
     if (this.createContentForm.valid) {
@@ -95,6 +97,8 @@ export class EditContentComponent implements OnInit {
       if (this.imageFile) {
         formData.append('image', this.imageFile, this.imageFile.name);
       }
+
+      this.submitted = true;
 
       // Send data to the backend
       if (this.contentId) {

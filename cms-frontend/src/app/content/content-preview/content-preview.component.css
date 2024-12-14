@@ -9,10 +9,12 @@
 
 }
 .content{
-    max-height: 720px;
+    max-height: 700px;
+    overflow: hidden;
 }
 
 .content-actions{
+    margin-top: 10px;
     height: 80px;
 }
 

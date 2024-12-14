@@ -9,6 +9,7 @@ import { EditContentComponent } from './content/edit-content/edit-content.compon
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
 import { BlogsComponent } from './blogs/blogs.component';
+import { ContentViewComponent } from './content/content-view/content-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'content/create', component: EditContentComponent, canActivate: [AuthGuard] },
   { path: 'content/edit/:id', component: EditContentComponent, canActivate: [AuthGuard] },
+  { path: 'content/:id', component: ContentViewComponent},
 ];
 
 @NgModule({

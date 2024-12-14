@@ -22,8 +22,8 @@
     
 
   <div class="content-actions">
-    <button mat-raised-button color="primary">Read More</button>
-    
+    <button mat-raised-button color="primary" (click)="viewContent(content.id)">Read More</button>
+
     <button mat-raised-button color="primary" (click)="editContent(content.id)">
       Edit
     </button>

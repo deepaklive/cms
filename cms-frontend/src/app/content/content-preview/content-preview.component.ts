@@ -34,7 +34,9 @@ export class ContentPreviewComponent implements OnInit {
   
   }
   
-  
+  viewContent(id: number) {
+    this.router.navigate(['/content', id]);  // Navigate to edit page (assuming you have a route for editing content)
+  }
   
   deleteContent(id: number) {
     this.contentService.deleteContent(id).subscribe(() => {
