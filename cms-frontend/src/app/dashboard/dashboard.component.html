@@ -1,6 +1,9 @@
-<p>dashboard works!</p>
-<div *ngIf="contents" class="content-container">
-  <mat-card class="item" *ngFor="let content of contents" class="content-card">
-    <app-content-preview [content]="content"></app-content-preview>
-  </mat-card>
+<div class="dashboard">
+  <p>Welcome, {{username}}</p>
+  <hr/>
+  
+  <div *ngIf="contents">
+    <app-content-list [contents]="contents"></app-content-list>
+  </div>
+  
 </div>

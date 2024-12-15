@@ -25,6 +25,7 @@ import { EditContentComponent } from './content/edit-content/edit-content.compon
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { BlogsComponent } from './blogs/blogs.component';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { BlogsComponent } from './blogs/blogs.component';
     ReactiveFormsModule,
     MaterialModule,
     CKEditorModule,
-    
+    TimeagoModule.forRoot()
 
   ],
   providers: [

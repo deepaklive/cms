@@ -1,34 +1,28 @@
 <div class="content-preview">
-    <div class="content">
-        <mat-card-header>
-            <mat-card-title>{{ content.title }}</mat-card-title>
-            <mat-card-subtitle
-              >{{ content.author.first_name }} {{ content.author.last_name }} -
-              {{ content.author.email }}</mat-card-subtitle
-            >
-          </mat-card-header>
-          <img
-            mat-card-image
-            [src]="content.image"
-            [alt]="altImage"
-            class="content-image"
-          />
-          
-          <mat-card-content>
-            <div [innerHTML]="content.body"></div>
-            <!-- <p>{{ content.body }}</p> -->
-          </mat-card-content>
-    </div>
-    
+  <img
+    mat-card-image
+    [src]="content.image"
+    [alt]="altImage"
+    class="content-image"
+  />
+
+  <div class="content-body">
+    <h5 class="card-title">{{ content.title }}</h5>
+    <h6 class="card-title">
+      {{ content.author.first_name }} {{ content.author.last_name }} -
+      {{ content.author.email }}
+    </h6>
+    <hr/>
+    <div class="card-text" [innerHTML]="content.body"></div>
+  </div>
 
   <div class="content-actions">
-    <button mat-raised-button color="primary" (click)="viewContent(content.id)">Read More</button>
-
-    <button mat-raised-button color="primary" (click)="editContent(content.id)">
-      Edit
+    <button mat-raised-button color="primary" (click)="viewContent(content.id)">
+      Read More
     </button>
-    <button mat-raised-button color="warn" (click)="deleteContent(content.id)">
-      Delete
+
+    <button mat-raised-button color="warn" (click)="editContent(content.id)">
+      Edit
     </button>
   </div>
 </div>

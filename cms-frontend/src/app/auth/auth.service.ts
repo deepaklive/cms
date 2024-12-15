@@ -18,6 +18,7 @@ export class AuthService {
   storeToken(username:string, token: string): void {
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('authToken', token);
+    this.isAuthenticated();
   }
 
   getToken(): string | null {

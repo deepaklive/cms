@@ -18,13 +18,13 @@
   
       <!-- First Name -->
       <div class="mb-3">
-        <label for="firstname" class="form-label">First Name</label>
+        <label for="first_name" class="form-label">First Name</label>
         <input 
           type="text" 
-          id="firstname" 
+          id="first_name" 
           class="form-control"
-          formControlName="firstname"
-          [class.is-invalid]="registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched">
+          formControlName="first_name"
+          [class.is-invalid]="registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched">
         <div class="invalid-feedback">
           First name is required.
         </div>

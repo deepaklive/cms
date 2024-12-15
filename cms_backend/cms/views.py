@@ -53,6 +53,16 @@ class ContentListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+    def get_queryset(self):
+        """
+        Optionally filters the queryset by author's username.
+        """
+        queryset = super().get_queryset()
+        author_name = self.request.query_params.get('author', None)
+        if author_name:
+            queryset = queryset.filter(author__username__icontains=author_name)
+        return queryset
+    
 
 class ContentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Content.objects.all()

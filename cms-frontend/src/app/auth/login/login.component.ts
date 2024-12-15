@@ -39,10 +39,10 @@ export class LoginComponent {
         console.log('Login successful');
         this.error = '';
         this.authService.storeToken(username ,token);
-        this.router.navigate(['/dashboard']); // Navigate to a protected route
+        this.router.navigate(['/']); // Navigate to a protected route
       },
       (error) => {
-        this.error = 'Invalid credentials. Please try again.';
+        this.error = error.error;
       }
     );
 

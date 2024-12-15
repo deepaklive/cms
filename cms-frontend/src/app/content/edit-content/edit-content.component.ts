@@ -43,7 +43,7 @@ export class EditContentComponent implements OnInit {
     this.createContentForm = this.fb.group({
       title: ['', [Validators.required]],
       body: ['', [Validators.required]],
-      image: ['', Validators.pattern(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/)],
+      image: [null],
     });
 
     // Get contentId from route parameters (if any)

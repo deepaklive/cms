@@ -22,7 +22,7 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
-      firstname: ['', Validators.required],
+      first_name: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -35,7 +35,7 @@ export class RegisterComponent {
       return;
     }
 
-    const { username, firstname, lastname, email, password } = this.registerForm.value;
+    const { username, first_name, lastname, email, password } = this.registerForm.value;
 
     this.apiService.post('register/', this.registerForm.value).subscribe(
       (res: any) => {

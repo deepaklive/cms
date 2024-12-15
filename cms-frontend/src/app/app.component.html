@@ -1,8 +1,12 @@
 
 
-<!-- Sticky Footer -->
- <app-header></app-header>
- <router-outlet></router-outlet>
- <br/><br/>
- <app-footer></app-footer>
+<app-header></app-header>
+<body class="d-flex flex-column min-vh-100">
+    <main class="flex-grow-1" style="padding: 20px;">
+        <router-outlet></router-outlet>
+        <br/><br/>
+     </main>
+     <app-footer></app-footer>
+ </body>
+ 
 

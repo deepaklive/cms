@@ -55,7 +55,7 @@
               <div class="mb-3">
                 <label for="imageUrl" class="form-label">Image </label>
                 <input
-                  type="text"
+                  type="file"
                   id="imageUrl"
                   class="form-control"
                   formControlName="image"
@@ -164,12 +164,7 @@
         createContentForm.get("title")?.value
       }}</mat-card-title>
     </mat-card-header>
-    <img
-      mat-card-image
-      [src]="imageFile"
-      [alt]="altImage"
-      class="content-image"
-    />
+    
     <mat-card-content>
       <div [innerHTML]="createContentForm.get('body')?.value"></div>
       <!-- <p>{{ content.body }}</p> -->
