@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,6 +8,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   private apiUrl = environment.baseUrl; // Replace with your backend URL
+
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +22,7 @@ export class AuthService {
   storeToken(username:string, token: string): void {
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('authToken', token);
-    this.isAuthenticated();
+    this.isAuthenticatedSubject.next(true);
   }
 
   getToken(): string | null {
@@ -32,6 +36,7 @@ export class AuthService {
   clearToken(): void {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('authToken');
+    this.isAuthenticatedSubject.next(false);
   }
 
   isAuthenticated(): boolean {

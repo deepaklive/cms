@@ -27,3 +27,7 @@
   height: 80px;
   padding: 20px;
 }
+
+.card-text{
+  text-align: justify;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+ 
+
   loginForm: FormGroup;
   error = '';
 
@@ -30,28 +32,17 @@ export class LoginComponent {
 
     const { username, password } = this.loginForm.value;
 
-    // Mock authentication logic
-    // Replace with actual auth service call
-
     this.authService.login(username, password).subscribe(
       (response) => {
         const token = response.token;
         console.log('Login successful');
         this.error = '';
-        this.authService.storeToken(username ,token);
-        this.router.navigate(['/']); // Navigate to a protected route
+        this.authService.storeToken(username, token);
+        this.router.navigate(['/dashboard']); 
       },
       (error) => {
-        this.error = error.error;
+        this.error = error.error.error;
       }
     );
-
-    if (username === 'admin' && password === 'admin') {
-      // success logic here
-      console.log('Login successful');
-      this.error = '';
-    } else {
-      this.error = 'Invalid username or password';
-    }
   }
 }

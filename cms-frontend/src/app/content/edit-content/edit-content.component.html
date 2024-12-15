@@ -5,7 +5,7 @@
       <div class="container mt-3">
         <div class="card mx-auto" style="max-width: 95%">
           <div class="card-header text-center">
-            <h5>Create Blog</h5>
+            <h5>{{ contentId ? "Edit" : "Create" }} Blog</h5>
           </div>
           <div class="card-body">
             <form [formGroup]="createContentForm" (ngSubmit)="onSubmit()">
@@ -86,7 +86,7 @@
                   class="btn btn-primary w-100"
                   [disabled]="createContentForm.invalid"
                 >
-                  Create Blog
+                  {{ contentId ? "Update" : "Create" }} Blog
                 </button>
               </div>
             </form>
@@ -159,16 +159,11 @@
     <!-- Right content goes here -->
     <h3>Preview</h3>
     <hr />
-    <mat-card-header>
-      <mat-card-title>{{
-        createContentForm.get("title")?.value
-      }}</mat-card-title>
-    </mat-card-header>
-    
+    <h3>{{ createContentForm.get("title")?.value }}</h3>
+
     <mat-card-content>
       <div [innerHTML]="createContentForm.get('body')?.value"></div>
       <!-- <p>{{ content.body }}</p> -->
     </mat-card-content>
-   
   </div>
 </div>

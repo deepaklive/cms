@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'blogs', component: BlogsComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'welcome', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'content/create', component: EditContentComponent, canActivate: [AuthGuard] },
   { path: 'content/edit/:id', component: EditContentComponent, canActivate: [AuthGuard] },
   { path: 'content/:id', component: ContentViewComponent},

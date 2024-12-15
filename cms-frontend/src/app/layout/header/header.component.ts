@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit,OnChanges {
+export class HeaderComponent implements OnInit {
 
   isAuthenticated:boolean=false;
 
@@ -16,18 +16,15 @@ export class HeaderComponent implements OnInit,OnChanges {
     public router:Router
   ){}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
-  }
-  
   ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
+    this.authService.isAuthenticated$.subscribe((authState) => {
+      this.isAuthenticated = authState;
+    });
   }
   
   onLogout(){
     this.authService.clearToken();
     this.authService.clearToken();
-    this.isAuthenticated = this.authService.isAuthenticated();
     this.router.navigate(['/']);
   }
 }
